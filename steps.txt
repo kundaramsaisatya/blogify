@@ -1,0 +1,25 @@
+
+//1st write index.js
+
+const express = require("express");
+const path = require("path");
+
+const app = express();
+
+//middlewares
+//view engine:
+app.set("view engine","ejs");
+app.set("views",path.resolve("./views"));
+
+const PORT = 8000;
+
+app.listen(PORT,()=>console.log(`Listening on port- ${PORT}`));
+
+//2nd go to views
+created partials
+
+//3rd
+create a route in index.js
+app.get("/",(res,req)=>{
+    res.render("home")
+})

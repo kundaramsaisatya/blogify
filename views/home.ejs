@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+
+    <!-- Blog Cards -->
+    <div class="container mt-3 row row-cols-4">
+        <% if (blogs && blogs.length > 0) { %>
+            <!-- Display search results if available -->
+            <% blogs.forEach(blog => { %>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<%= blog.coverImageUrl %>" class="card-img-top" height="250px" alt="Ayyoo">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= blog.title %></h5>
+                            <p class="card-text"><%= blog.body.substring(0, 100) + '...' %></p>
+                            <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <!-- Display message if no search results found -->
+            <div class="col">
+                <p>No search results found.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>
